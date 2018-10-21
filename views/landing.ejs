@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        body{
+            margin: auto;
+            width: 50%;
+            text-align: center;
+        }
+        ul{
+            list-style: none;
+        }
+        #addContact{
+            margin: auto;
+            width: 50%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Contacts Book</h1>
+    
+    <div id="contactList">
+        <h2>Contacts:</h2>
+        <ul>
+            <% for (let i = 0; i < contacts.length; i++)  { %>
+                <li><strong>Name: </strong><%=contacts[i].name%><br><strong> Phone: </strong><%=contacts[i].phone%><br><strong> Email: </strong><%=contacts[i].email%>  
+                <form action="/delete" method="POST">
+                    <input type="hidden" name="id" value= <%= contacts[i]._id %> >
+                    <button type="submit" class="btn btn-danger">Delete Contact</button>
+                </form>
+                </li>
+                <br>
+            <% } %>
+        </ul>
+    </div>
+    <div id="addContact" class="col-5">
+        <h2>Add Contact:</h2>
+        <form action="/" method="POST">
+            Name:<input name="name" placeholder="Enter Name" class="form-control" type="text">
+            <br>
+            Phone:<input name="phone" placeholder="Enter Phone Number" class="form-control" type="text">
+            <br>
+            Email:<input name="email" placeholder="Enter Email" class="form-control" type="text">
+            <br>
+            <button class="btn btn-primary">Add Contact</button>
+        </form>
+    </div>
+</body>
+</html>
